@@ -15,8 +15,7 @@
   become_user: root
   become_method: sudo
 
-  # tasks: 
-  #   - name: run docker commande
-  #     raw: docker run -dit --name ub2 ubuntu /bin/bash
-  roles:
-    - run_test
+  tasks: 
+    - name: run docker commande
+      raw: docker run -dit --name ub2 ubuntu /bin/bash
+
