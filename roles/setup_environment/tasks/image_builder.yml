@@ -1,0 +1,9 @@
+---
+- name: build base
+  raw: docker build -t jmeter:base ./Git/dockerfiles/Docker-images/Images/jmeter_base
+
+- name: build client
+  raw: docker build -t jmeter:client ./Git/dockerfiles/Docker-images/Images/jmeter_client
+
+- name: build server
+  raw: docker build -t jmeter:server ./Git/dockerfiles/Docker-images/Images/jmeter_server

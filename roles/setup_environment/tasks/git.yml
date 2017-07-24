@@ -1,0 +1,11 @@
+---
+- name: Import image from git
+  git:
+    repo: git@github.com:zakaria22/repo.git
+    dest: /home/zak/Git/dockerfiles/
+    accept_hostkey: true
+    clone: yes
+    key_file: /home/zak/.ssh/id_rsa
+  tags:
+    - clone
+
