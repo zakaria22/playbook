@@ -20,7 +20,7 @@
     - name: get docker container {{ item }} ip
       shell: "docker container inspect -f '{''{range .NetworkSettings.Networks}''}''{''{.IPAddress}''}''{''{end}''}' ub{{ item }}"
       register: ip_container
-    - copy: 
+      copy: 
         content: "{{ ip_container.stdout_lines }}" 
         dest: /home/zak/properties
       with_sequence: "count=4"
