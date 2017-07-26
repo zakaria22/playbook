@@ -19,9 +19,7 @@
     - name: get docker container ip
       shell: "docker container inspect -f '{''{range .NetworkSettings.Networks}''}''{''{.IPAddress}''}''{''{end}''}' ub2"
       register: ip_container
-
-    - debug:
-        msg: "IP :  {{ ip_container.stdout_lines }} "
+      copy: content="{{ ip_container.stdout_lines }}" dest=/home/zak/properties
       
 
   # roles:
