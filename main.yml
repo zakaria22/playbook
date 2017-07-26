@@ -5,9 +5,6 @@
 #   become_user: root
 #   become_method: sudo
 
-#   roles:
-#     - jmeter
-
 - hosts: all # group of targets
   #gather_facts: False # get information of plateform running on - False - cuz it required python (if true get error)
   remote_user: zak
@@ -19,3 +16,9 @@
     - name: run docker commande
       raw: docker run -dit --name ub2 ubuntu /bin/bash
 
+    - name: get docker container ip
+      raw: docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' ub2
+ 
+
+  # roles:
+  #   - run_test
