@@ -17,8 +17,12 @@
       raw: docker run -dit --name ub2 ubuntu /bin/bash
 
     - name: get docker container ip
-      raw: docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' ub2
+      raw: docker container inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' ub2
+      register: ip_container
+      msg: "IP :  {{ ip_container }} "
  
 
   # roles:
   #   - run_test
+# - set_fact:
+#     string_to_echo: "{{ command_output.stdout }}"
