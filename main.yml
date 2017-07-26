@@ -23,14 +23,14 @@
       register: ip_container
 
     - set_fact:
-        mysequence: "{{ ip_container | map(attribute='stdout') | list }}"
+        mysequence: "{{ ip_container | list }}"
 
     - name: save to file 
       copy: 
         content: "{{ mysequence }}" 
         dest: '/home/zak/properties'
 
-        
+
     # - name: get docker container {{ item }} ip
     #   shell: "docker container inspect -f '{''{range .NetworkSettings.Networks}''}''{''{.IPAddress}''}''{''{end}''}' ub{{ item }}"
     #   register: ip_container
