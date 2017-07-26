@@ -25,10 +25,10 @@
     - set_fact:
         mysequence: "{{ ip_container.results | map(attribute='stdout') | list | replace('\"','') }}"
 
-    # - name: save to file 
-    #   copy: 
-    #     content: "{{ mysequence | replace('['']''\"', '') |}}"
-    #     dest: '/home/zak/properties'
+    - name: save to file 
+      copy: 
+        content: "{{ mysequence }}"
+        dest: '/home/zak/properties'
 
 
     # - debug: var=item
