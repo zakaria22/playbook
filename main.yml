@@ -24,7 +24,7 @@
 
     - name: save to file 
       copy: 
-        content: "{{ ip_container.stdout_lines }}" 
+        content: "{{ ip_container }}" 
         dest: '/home/zak/properties'
 
 
