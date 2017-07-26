@@ -22,13 +22,14 @@
       with_sequence: "count=4"
       register: ip_container
 
-    # - set_fact:
-    #     mysequence: "{{ ip_container | map(attribute='stdout') | list }}"
+    - set_fact:
+        mysequence: "{{ ip_container.results | map(attribute='stdout_lines') | list }}"
 
     - name: save to file 
       copy: 
-        content: "{{ ip_container.results | map(attribute='stdout_lines') | list }}" 
+        content: "{{ mysequence | replace('['']''\"', '') |}}"
         dest: '/home/zak/properties'
+
 
     # - debug: var=item
     #   with_items: "{{ ip_container.results | map(attribute='stdout_lines') | list }}"
