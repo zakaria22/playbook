@@ -34,8 +34,8 @@
 #      replace: dest="/home/core/linetest" regexp="KUCF" replace=""
       replace:
         dest: /home/zak/properties
-        regexp: 'app_name:\s[0-9]*'
-        replace: 'app_name: ""'
+        regexp: '[0-9]*'
+        replace: ''
 
     # - debug: var=item
     #   with_items: "{{ ip_container.results | map(attribute='stdout_lines') | list }}"
