@@ -21,7 +21,7 @@
       register: ip_container
 
     - debug:
-        msg: "IP :  {{ ip_container }} "
+        msg: "IP :  {{ ip_container.stdout_lines }} "
       
 
   # roles:
