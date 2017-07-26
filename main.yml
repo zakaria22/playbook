@@ -22,10 +22,11 @@
       with_sequence: "count=4"
       register: ip_container
       copy: 
-        content: "{{ ip_container.stdout }}" 
+        content: "{{ ip_container.stdout_lines }}" 
         dest: /home/zak/properties
 
-    # - set_fact:
+
+ # - set_fact:
     #     mysequence: "{{ ip_container.results | map(attribute='stdout') | list }}"
 
     # - name: get docker container {{ item }} ip
