@@ -23,11 +23,11 @@
       register: ip_container
 
     - set_fact:
-        mysequence: "{{ ip_container.results | map(attribute='stdout') | list | replace('\"','') }}"
+        mysequence: "{{ ip_container.results | map(attribute='stdout') | list }}"
 
     - name: save to file 
       copy: 
-        content: "{{ mysequence }}"
+        content: "{{ mysequence | replace('[','') }}"
         dest: '/home/zak/properties'
 
 
