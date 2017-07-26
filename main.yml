@@ -31,9 +31,9 @@
         dest: '/home/zak/properties'
 
     - name: format ip
-      raw: sed -i -e 's/\"//' properties
-      raw: sed -i -e 's/\]//' properties
-      raw: sed -i -e 's/\[//' properties
+      shell: sed -i -e 's/"//' properties
+      # raw: sed -i -e 's/\]//' properties
+      # raw: sed -i -e 's/\[//' properties
      
 
     # - debug: var=item
