@@ -23,7 +23,7 @@
       register: ip_container
 
     - set_fact:
-        mysequence: "{{ ip_container.results | map(attribute='stdout') | list }}"
+        mysequence: "{{ ip_container.results | map(attribute='stdout') | list | replace('\"','') }}"
 
     # - name: save to file 
     #   copy: 
