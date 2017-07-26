@@ -17,20 +17,29 @@
     #   raw: docker run -dit --name ub{{ item }}  ubuntu /bin/bash
     #   with_sequence: "count=4"
 
-    - name: get docker container "{{ item }}" ip
+    - name: get slaves ip 
       shell: "docker container inspect -f '{''{range .NetworkSettings.Networks}''}''{''{.IPAddress}''}''{''{end}''}' ub{{ item }}"
-      register: ip_container
-      copy: 
-        content: "{{ ip_container.stdout_lines }}" 
-        dest: /home/zak/properties
       with_sequence: "count=4"
+      register: ip_container
+
+    # - set_fact:
+    #     mysequence: "{{ ip_container.results | map(attribute='item') | list }}"
+
+    - debug: var=ip_container
+
+    # - name: get docker container {{ item }} ip
+    #   shell: "docker container inspect -f '{''{range .NetworkSettings.Networks}''}''{''{.IPAddress}''}''{''{end}''}' ub{{ item }}"
+    #   register: ip_container
+    #   copy: 
+    #     content: "{{ ip_container.stdout_lines }}" 
+    #     dest: /home/zak/properties
+    #   with_sequence: "count=4"
       
 # - group:
 #         name: "group{{ item }}"
 #         state: present
 #       with_sequence:
 #         count: 4
+
   # roles:
   #   - run_test
-# - set_fact:
-#     string_to_echo: "{{ command_output.stdout }}"
