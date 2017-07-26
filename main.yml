@@ -27,9 +27,15 @@
 
     - name: save to file 
       copy: 
-        content: "{{ mysequence  }}"
+        content: "{{ ip_container.results | map(attribute='stdout') | list }}"
         dest: '/home/zak/properties'
 
+    - name: format ip
+#      replace: dest="/home/core/linetest" regexp="KUCF" replace=""
+      replace:
+        dest: /home/zak/properties
+        regexp: 'app_name:\s[0-9]*'
+        replace: 'app_name: ""'
 
     # - debug: var=item
     #   with_items: "{{ ip_container.results | map(attribute='stdout_lines') | list }}"
