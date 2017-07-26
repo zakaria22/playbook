@@ -27,7 +27,7 @@
 
     - name: save to file 
       copy: 
-        content: "{{ mysequence | replace('[','') }}"
+        content: "{{ mysequence | replace('[',' ') }}"
         dest: '/home/zak/properties'
 
 
