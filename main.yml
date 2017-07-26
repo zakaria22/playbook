@@ -31,11 +31,10 @@
         dest: '/home/zak/properties'
 
     - name: format ip
-#      replace: dest="/home/core/linetest" regexp="KUCF" replace=""
-      replace:
-        dest: /home/zak/properties
-        regexp: '![0-9]*'
-        replace: ' '
+      shell: sed -i -e 's/"//' propoerties
+      shell: sed -i -e 's/]//' propoerties
+      shell: sed -i -e 's/\[//' propoerties
+     
 
     # - debug: var=item
     #   with_items: "{{ ip_container.results | map(attribute='stdout_lines') | list }}"
