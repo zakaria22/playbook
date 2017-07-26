@@ -16,7 +16,7 @@
     - name: create docker container {{ item }} 
       raw: docker run -dit --name ub{{ item }}  ubuntu /bin/bash
       with_sequence:
-        count: 4
+        count: "4"
 
 #     - name: get docker container  ip
 #       shell: "docker container inspect -f '{''{range .NetworkSettings.Networks}''}''{''{.IPAddress}''}''{''{end}''}' ub2"
