@@ -20,7 +20,7 @@
     - name: get slaves ip 
       shell: "docker container inspect -f '{''{range .NetworkSettings.Networks}''}''{''{.IPAddress}''}''{''{end}''}' ub'{{ item }}'"
       with_sequence: "count=4"
-      register: ip_container
+      register: ip_container.stdout
 
     - name: save to file 
       copy: 
