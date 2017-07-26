@@ -22,14 +22,16 @@
       with_sequence: "count=4"
       register: ip_container
 
-    - set_fact:
-        mysequence: "{{ ip_container | list }}"
+    # - set_fact:
+    #     mysequence: "{{ ip_container | map(attribute='stdout') | list }}"
 
-    - name: save to file 
-      copy: 
-        content: "{{ mysequence }}" 
-        dest: '/home/zak/properties'
+    # - name: save to file 
+    #   copy: 
+    #     content: "{{ mysequence }}" 
+    #     dest: '/home/zak/properties'
 
+    - debug: var=item
+      with_items: "{{ ip_container | map(attribute='stdout_lines') | list }}"
 
     # - name: get docker container {{ item }} ip
     #   shell: "docker container inspect -f '{''{range .NetworkSettings.Networks}''}''{''{.IPAddress}''}''{''{end}''}' ub{{ item }}"
