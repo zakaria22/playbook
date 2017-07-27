@@ -12,6 +12,6 @@
   become_user: root
   become_method: sudo
 
-  tasks: 
-    roles:
-      - run_test
+  # tasks: 
+  roles:
+    - run_test
