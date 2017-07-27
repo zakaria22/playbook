@@ -1,7 +1,7 @@
 ---
 
 - include: slaves.yml
-  when: {{ NumServers }} != '0' 
+  when: {{ NumServers }} !== '0'
 
 - name: create master container 
   raw: docker run -dit --name master_{{Nom_Projet}} jmeter:client /bin/bash
