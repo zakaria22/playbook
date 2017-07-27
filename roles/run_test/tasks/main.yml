@@ -1,4 +1,8 @@
 ---
+
+- include: slaves.yml
+  when: {{ NumServers }} != '0' 
+
 - name: create master container 
   raw: docker run -dit --name master_{{Nom_Projet}} jmeter:client /bin/bash
 
@@ -6,7 +10,6 @@
 
 # - name: get slaves IP
 
-# - name: write properties
 
 # - name: clone script {{Nom_Projet}}
 #   git:
