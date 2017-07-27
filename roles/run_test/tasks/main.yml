@@ -1,7 +1,7 @@
 ---
 
 - include: slaves.yml
-  when: {{ NumServers | version_compare('0.0', '>=') }}
+  when: "{{ NumServers | version_compare('0.0', '>=') }}"
 
 - name: create master container 
   raw: docker run -dit --name master_{{Nom_Projet}} jmeter:client /bin/bash
