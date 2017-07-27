@@ -4,7 +4,7 @@
   with_sequence: "count={{ NumServers }}"
 
 - name: get slaves ip 
-  shell: "docker container inspect -f '{''{range .NetworkSettings.Networks}''}''{''{.IPAddress}''}''{''{end}''}' slave_'{{ item }}'"
+  shell: "docker container inspect -f '{''{range .NetworkSettings.Networks}''}''{''{.IPAddress}''}''{''{end}''}' slave_'{{ Nom_Projet }}''{{ item }}'"
   with_sequence: "count={{ NumServers }}"
   register: ip_container
 
