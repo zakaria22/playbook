@@ -9,7 +9,7 @@
 - name: clone script {{Nom_Projet}}
   git:
     repo: git@github.com:{{Git_User}}/{{Nom_Projet}}.git
-    dest: /home/zak/Git/
+    dest: /home/zak/
     accept_hostkey: true
     clone: yes
     key_file: /home/zak/.ssh/id_rsa
