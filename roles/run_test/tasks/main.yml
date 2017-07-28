@@ -6,20 +6,15 @@
 - name: create master container 
   raw: docker run -dit --name master_{{Nom_Projet}} jmeter:client /bin/bash
 
-# - name: create slave container 
-
-# - name: get slaves IP
-
-
-# - name: clone script {{Nom_Projet}}
-#   git:
-#     repo: git@github.com:{{Git_User}}/{{Nom_Projet}}.git
-#     dest: /home/zak/Git/
-#     accept_hostkey: true
-#     clone: yes
-#     key_file: /home/zak/.ssh/id_rsa
-#   tags:
-#     - clone
+- name: clone script {{Nom_Projet}}
+  git:
+    repo: git@github.com:{{Git_User}}/{{Nom_Projet}}.git
+    dest: /home/zak/Git/
+    accept_hostkey: true
+    clone: yes
+    key_file: /home/zak/.ssh/id_rsa
+  tags:
+    - clone
 
 # - name: copy ProjetSIS to container
 

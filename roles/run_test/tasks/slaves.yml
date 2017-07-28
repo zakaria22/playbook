@@ -14,7 +14,7 @@
     dest: '/home/zak/properties'
 
 - name: format ip
-  shell: sed -i -e 's/"//g' properties && sed -i -e 's/\]//g' properties && sed -i -e 's/\[//g' properties 
+  shell: sed -i -e 's/"//g' properties && sed -i -e 's/\]//g' properties && sed -i -e 's/\[//g' properties && sed -i -e 's/ //g' properties 
 
 - name: set remote properties
   shell: sed -i '1s/^/remote.host=/' properties
