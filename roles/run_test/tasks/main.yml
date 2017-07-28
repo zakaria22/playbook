@@ -1,11 +1,5 @@
 ---
 
-- include: slaves.yml
-  when: "{{ NumServers | version_compare('0.0', '>') }}"
-
-- name: create master container 
-  raw: docker run -dit --name master_{{Nom_Projet}} jmeter:client /bin/bash
-
 - name: clone script {{Nom_Projet}}
   git:
     repo: git@github.com:{{Git_User}}/{{Nom_Projet}}.git
@@ -16,7 +10,14 @@
   tags:
     - clone
 
+- include: slaves.yml
+  when: "{{ NumServers | version_compare('0.0', '>') }}"
+
+- name: create master container 
+  raw: docker run -dit --name master_{{Nom_Projet}} jmeter:client /bin/bash
+
 - name: copy {{Nom_Projet}} to master container
+  raw: docker cp /home/zak/Git/{{Nom_Projet}}/ master_{{Nom_Projet}}:{{Nom_Projet}}
 
 # - name: copy ProjetSIS to container
 

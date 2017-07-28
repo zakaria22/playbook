@@ -19,4 +19,7 @@
 - name: set remote properties
   shell: sed -i '1s/^/remote.host=/' properties
 
+#- name: copy data folder to slaves 
+  
+
 # - name: write properties
