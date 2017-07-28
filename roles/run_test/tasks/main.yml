@@ -19,9 +19,8 @@
 - name: copy {{Nom_Projet}} to master container
   raw: docker cp /home/zak/Git/{{Nom_Projet}}/ master_{{Nom_Projet}}:{{Nom_Projet}}
 
-# - name: copy ProjetSIS to container
-
-# - name: execute script ProjetSIS
+- name: execute script {{Nom_Projet}}
+  raw: docker exec -it master_{{Nom_Projet}} jmeter -n -t {{Nom_Projet}}/script/tag.jmx
 
 # - name: Get result
 
