@@ -16,6 +16,8 @@
   tags:
     - clone
 
+- name: copy {{Nom_Projet}} to master container
+
 # - name: copy ProjetSIS to container
 
 # - name: execute script ProjetSIS
