@@ -14,10 +14,10 @@
     dest: '/home/zak/properties'
 
 - name: format ip
-  shell: sed -i -e 's/"//g' properties && sed -i -e 's/\]//g' properties && sed -i -e 's/\[//g' properties && sed -i -e 's/ //g' properties 
+  raw: sed -i -e 's/"//g' properties && sed -i -e 's/\]//g' properties && sed -i -e 's/\[//g' properties && sed -i -e 's/ //g' properties 
 
 - name: set remote properties
-  shell: sed -i '1s/^/remote.host=/' properties
+  raw: sed -i '1s/^/remote.host=/' properties
 
 # - name: copy data folder to slaves 
 #   raw: docker cp /home/zak/Git/{{Nom_Projet}}/data/ master_{{Nom_Projet}}:data
